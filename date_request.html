@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Go on a Date with Me?</title>
+  <style>
+    body {
+      background: #f9f9f9;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      width: 1000px;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 40px;
+    }
+
+    .buttons {
+      position: relative;
+      width: 100%;
+      height: 100px;
+    }
+
+    #yesBtn, #noBtn {
+      padding: 15px 30px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      position: absolute;
+      transition: left 0.2s ease, top 0.2s ease;
+    }
+
+    #yesBtn {
+      background-color: #4CAF50;
+      color: white;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
+
+    #noBtn {
+      background-color: #f44336;
+      color: white;
+      left: 60%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .fullscreen-message {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #4CAF50;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .fullscreen-message img {
+      max-width: 300px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Do you want to go on a date with me?</h1>
+    <div class="buttons">
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
+    </div>
+  </div>
+
+  <!-- Confetti library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Optional sound -->
+  <audio id="yaySound" src="https://assets.mixkit.co/sfx/preview/mixkit-small-crowd-cheer-and-applause-518.mp3"></audio>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const container = document.querySelector('.buttons');
+    const yaySound = document.getElementById('yaySound');
+
+    container.addEventListener('mousemove', (e) => {
+      const mouseX = e.clientX - container.getBoundingClientRect().left;
+      const mouseY = e.clientY - container.getBoundingClientRect().top;
+
+      const btnRect = noBtn.getBoundingClientRect();
+      const btnX = btnRect.left - container.getBoundingClientRect().left + btnRect.width / 2;
+      const btnY = btnRect.top - container.getBoundingClientRect().top + btnRect.height / 2;
+
+      const distance = Math.hypot(mouseX - btnX, mouseY - btnY);
+
+      if (distance < 80) {
+        const containerWidth = container.clientWidth;
+        const containerHeight = container.clientHeight;
+        const btnWidth = noBtn.offsetWidth;
+        const btnHeight = noBtn.offsetHeight;
+
+        const padding = 10;
+        let newX = Math.random() * (containerWidth - btnWidth - padding * 2) + padding;
+        let newY = Math.random() * (containerHeight - btnHeight - padding * 2) + padding;
+
+        noBtn.style.left = `${newX}px`;
+        noBtn.style.top = `${newY}px`;
+      }
+    });
+
+    yesBtn.addEventListener('click', () => {
+      document.querySelector('.container').style.display = 'none';
+
+      confetti({
+        particleCount: 200,
+        spread: 100,
+        origin: { y: 0.6 }
+      });
+
+      yaySound.play();
+
+      const message = document.createElement('div');
+      message.classList.add('fullscreen-message');
+      message.innerHTML = `
+        Yaaay! Let’s go on a date — you pick the place and time ❤️
+        <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Dancing Cat GIF"/>
+      `;
+      document.body.appendChild(message);
+    });
+  </script>
+</body>
+</html>
