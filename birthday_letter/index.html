@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Bday Baby</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <link rel="icon" href="./heart.png">
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+
+    <audio loop id="background-audio">
+        <source src="birthday_background_score.mp3" type="audio/mp3" />
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="modal" id="audio-modal">
+        <div class="modal-content">
+          <h2>Hi cutie !</h2>
+          <p>Dont foget to open the letter</p>
+          <p style="margin-bottom: 30px !important;">Click the button below to start.</p>
+          <button onclick="startMusic()">Start</button>
+        </div>
+    </div>
+
+    <div class="card">
+      <div class="outside">
+        <div class="front">
+          <p>Happy Birthday <br>
+            Baby
+          </p>
+          <div class="cake">
+            <div class="top-layer"></div>
+            <div class="middle-layer"></div>
+            <div class="bottom-layer"></div>
+            <div class="candle"></div>
+          </div>
+        </div>
+        <div class="back"></div>
+      </div>
+      <div class="inside">
+        <p>Happy bday to the most prettiest girl in the world!!!</p>
+        <h1>🌹</h1>
+      </div>
+    </div>
+
+    <script>
+        function startMusic() {
+          const audio = document.getElementById('background-audio');
+          audio.play()
+            .then(() => {
+              document.getElementById('audio-modal').style.display = 'none';
+            })
+            .catch(error => {
+              console.error("Audio play error:", error);
+              alert("Unable to play audio automatically. Please try again.");
+            });
+        }
+    </script>
+
+
+  </body>
+</html>
