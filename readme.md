@@ -15,9 +15,30 @@ A bunch of lighthearted codes like:
 - 🐱 **Dancing Cat Meme** — A page with a dancing cat GIF to brighten your day.
 - 🪙 **Coin Flip** — Flip a virtual coin with fun animations.
 
+## 🔜 Upcoming
+
+A bunch of lighthearted codes like:
+
+- 🎲 **Dice Roller** — Roll a 3D dice to get random numbers.
+- ✂️ **Rock Paper Scissors** — Play classic RPS with simple animations.
+- 🥠 **Fortune Cookie** — Crack open a cookie for a surprise message.
+- 🎱 **Magic 8-Ball** — Ask a question, shake for a fun answer.
+- 🧽 **Scratch Card** — Scratch to reveal a hidden reward.
+- 🧩 **Memory Match** — Find pairs in a classic card flip game.
+- 🎰 **Slot Machine** — Spin reels, match symbols, win big (virtually)!
+- 🎟️ **Random Name Picker** — Enter names, spin to pick a winner.
+- ❓ **Quick Quiz** — Answer trivia, see your score at the end.
+- 🎈 **Balloon Pop** — Random colored balloons float up, click to pop for points.
+- ⚡ **Reaction Timer** — Click “Start”, wait for color to change, then click fast!.
+- 🎵 **Soundboard** — Click buttons to play fun sounds.
+- 🌈 **Color Picker Game** — Show random colors, user guesses the hex code or name.
+- 🪄 **Level Up** — Level up animations.
+
+## AND MORE
+
 ---
 
-## ✨ How to Use
+## 🚀 How to Use
 
 Simple. run the index.html you want
 
