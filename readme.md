@@ -14,12 +14,14 @@ A bunch of lighthearted codes like:
 - 🎉 **Confetti Cat Page** — Celebrate with a cat launching rainbow confettis.
 - 🐱 **Dancing Cat Meme** — A page with a dancing cat GIF to brighten your day.
 - 🪙 **Coin Flip** — Flip a virtual coin with fun animations.
+- 🎲 **Dice Roller** — Roll a 3D dice to get random numbers.
+- 🎹 **FL Keys** — A piano keyboard.
+- 🎵 **Soundboard** — Click buttons to play fun sounds.
 
 ## 🔜 Upcoming
 
 A bunch of lighthearted codes like:
 
-- 🎲 **Dice Roller** — Roll a 3D dice to get random numbers.
 - ✂️ **Rock Paper Scissors** — Play classic RPS with simple animations.
 - 🥠 **Fortune Cookie** — Crack open a cookie for a surprise message.
 - 🎱 **Magic 8-Ball** — Ask a question, shake for a fun answer.
@@ -30,7 +32,6 @@ A bunch of lighthearted codes like:
 - ❓ **Quick Quiz** — Answer trivia, see your score at the end.
 - 🎈 **Balloon Pop** — Random colored balloons float up, click to pop for points.
 - ⚡ **Reaction Timer** — Click “Start”, wait for color to change, then click fast!.
-- 🎵 **Soundboard** — Click buttons to play fun sounds.
 - 🌈 **Color Picker Game** — Show random colors, user guesses the hex code or name.
 - 🪄 **Level Up** — Level up animations.
 
