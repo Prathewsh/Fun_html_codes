@@ -6,50 +6,21 @@
     <link rel="icon" href="./assets/logo.webp" />
     <title>Markuply</title>
     <style>
-      * {
-        box-sizing: border-box;
-      }
-
       body {
         background: linear-gradient(to right, #89f7fe, #66a6ff);
         font-family: "Segoe UI", Arial, sans-serif;
         margin: 0;
-        padding-top: 80px; /* space for sticky header */
+        padding: 40px 20px;
         color: #333;
         display: flex;
         flex-direction: column;
         align-items: center;
       }
 
-      header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(6px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 15px 20px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        z-index: 1000;
-      }
-
-      nav a {
-        margin: 0 15px;
-        font-weight: bold;
-        color: #333;
-        text-decoration: none;
-        font-size: 16px;
-      }
-
-      nav a:hover {
-        color: #6c63ff;
-      }
-
       h1 {
         font-size: 48px;
         margin-bottom: 10px;
+        text-decoration: none;
       }
 
       p {
@@ -77,7 +48,7 @@
         position: relative;
         transition: transform 0.2s, box-shadow 0.2s;
         cursor: pointer;
-        text-decoration: none;
+        text-decoration: none; /* Remove underline */
       }
 
       .card:hover {
@@ -94,6 +65,7 @@
       .card h2 {
         font-size: 20px;
         margin: 0;
+        text-decoration: none;
       }
 
       .badge {
@@ -118,51 +90,35 @@
         margin-bottom: 25px;
         padding-left: 12px;
         display: inline-block;
+        text-decoration: none;
       }
 
       footer {
-        margin-top: 60px;
-        padding: 20px;
+        margin-top: 50px;
         font-size: 14px;
         color: #333;
         font-weight: bold;
-        text-align: center;
-        width: 100%;
       }
 
-      footer a {
-        color: #333;
-        text-decoration: none;
-        margin: 0 10px;
-        font-weight: bold;
-      }
-
-      footer a:hover {
-        color: #6c63ff;
-      }
-
+      /* Ensure all links never have underline */
       a {
         text-decoration: none;
         color: inherit;
       }
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      a * {
+        text-decoration: none;
+      }
     </style>
   </head>
   <body>
-    <!-- HEADER -->
-    <header>
-      <nav>
-        <a href="index.html">🏠 Home</a>
-        <a href="about.html">📖 About</a>
-        <a href="https://github.com/Prathewsh/Fun_html_codes" target="_blank"
-          >🌐 GitHub</a
-        >
-      </nav>
-    </header>
-
-    <!-- MAIN CONTENT -->
     <h1>Welcome to Markuply</h1>
     <p>
-      📂 What's inside? A collection of lighthearted mini web projects to make
+      📂 Whats inside ? A collection of lighthearted mini web projects to make
       you and your friends smile!
     </p>
 
@@ -278,14 +234,8 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
       &copy; <span id="year"></span> Markuply — All fun, no stress!
-      <br />
-      <a href="index.html">Home</a> | <a href="about.html">About</a> |
-      <a href="https://github.com/Prathewsh/Fun_html_codes" target="_blank"
-        >GitHub</a
-      >
     </footer>
 
     <script>
