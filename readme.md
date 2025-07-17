@@ -1,4 +1,4 @@
-# Fun_html_codes 🎉
+# Markuply 🎉
 
 A collection of fun and simple HTML, CSS, and JavaScript mini-projects.  
 Perfect for learning, sharing, or just having a good laugh with small interactive pages.
