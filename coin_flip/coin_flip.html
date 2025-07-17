@@ -1,122 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Realistic Coin Flip</title>
-  <style>
-    body {
-      background: radial-gradient(circle at center, #89f7fe, #66a6ff);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      color: #333;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Realistic Coin Flip</title>
+    <style>
+      body {
+        background: radial-gradient(circle at center, #89f7fe, #66a6ff);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        color: #333;
+      }
 
-    h1 {
-      margin-bottom: 10px;
-      font-size: 36px;
-    }
+      h1 {
+        margin-bottom: 10px;
+        font-size: 36px;
+      }
 
-    p {
-      margin: 5px 0 30px;
-      font-size: 18px;
-    }
+      p {
+        margin: 5px 0 30px;
+        font-size: 18px;
+      }
 
-    .coin-container {
-      perspective: 1200px;
-      width: 200px;
-      height: 200px;
-      position: relative;
-    }
+      .coin-container {
+        perspective: 1200px;
+        width: 200px;
+        height: 200px;
+        position: relative;
+      }
 
-    .coin {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 2s ease-in-out;
-    }
+      .coin {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 2s ease-in-out;
+      }
 
-    .face {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      box-shadow: 2px 4px 8px black;
-      background-size: cover;
-      background-position: center;
-      backface-visibility: hidden;
-    }
+      .face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        box-shadow: 2px 4px 8px black;
+        background-size: cover;
+        background-position: center;
+        backface-visibility: hidden;
+      }
 
-    .front {
-      background-image: url('front.png');
-    }
+      .front {
+        background-image: url("front.png");
+      }
 
-    .back {
-      background-image: url('back.png');
-      transform: rotateY(180deg);
-    }
+      .back {
+        background-image: url("back.png");
+        transform: rotateY(180deg);
+      }
 
-    button {
-      margin-top: 30px;
-      padding: 12px 24px;
-      font-size: 18px;
-      font-weight: bold;
-      background: #333;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-    }
+      button {
+        margin-top: 30px;
+        padding: 12px 24px;
+        font-size: 18px;
+        font-weight: bold;
+        background: #333;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+      }
 
-    button:hover {
-      background: #555;
-      transform: scale(1.05);
-    }
+      button:hover {
+        background: #555;
+        transform: scale(1.05);
+      }
 
-    button:active {
-      transform: scale(0.98);
-    }
-  </style>
-</head>
-<body>
-  <h1>Flip the Coin!</h1>
-  <p>Click the button below to flip a real coin and test your luck.</p>
-  
-  <div class="coin-container">
-    <div class="coin" id="coin">
-      <div class="face front"></div>
-      <div class="face back"></div>
+      button:active {
+        transform: scale(0.98);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Flip the Coin!</h1>
+    <p>Click the button below to flip a real coin and test your luck.</p>
+
+    <div class="coin-container">
+      <div class="coin" id="coin">
+        <div class="face front"></div>
+        <div class="face back"></div>
+      </div>
     </div>
-  </div>
-  <button onclick="flipCoin()">Flip Coin</button>
+    <button onclick="flipCoin()">Flip Coin</button>
 
-  <script>
-    let flipping = false;
-    let rotation = 0;
+    <script>
+      let flipping = false;
+      let rotation = 0;
 
-    function flipCoin() {
-      if (flipping) return;
+      function flipCoin() {
+        if (flipping) return;
 
-      flipping = true;
-      const coin = document.getElementById('coin');
-      const isHeads = Math.random() < 0.5;
-      const spins = 5;
+        flipping = true;
+        const coin = document.getElementById("coin");
+        const isHeads = Math.random() < 0.5;
+        const spins = 5;
 
-      rotation += spins * 360 + (isHeads ? 0 : 180);
-      coin.style.transform = `rotateY(${rotation}deg)`;
+        rotation += spins * 360 + (isHeads ? 0 : 180);
+        coin.style.transform = `rotateY(${rotation}deg)`;
 
-      setTimeout(() => {
-        flipping = false;
-      }, 2000);
-    }
-  </script>
-</body>
+        setTimeout(() => {
+          flipping = false;
+        }, 2000);
+      }
+    </script>
+  </body>
 </html>

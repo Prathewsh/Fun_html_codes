@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fruit Ninja</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: #111;
+        font-family: "Segoe UI", sans-serif;
+        touch-action: manipulation;
+      }
+
+      .fruit,
+      .bomb {
+        position: absolute;
+        font-size: 64px;
+        cursor: pointer;
+        user-select: none;
+        animation: flyUp 3.5s ease-out forwards;
+        pointer-events: auto;
+      }
+
+      .sliced {
+        animation: popEffect 0.4s ease-out forwards !important;
+      }
+
+      @keyframes flyUp {
+        0% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        50% {
+          transform: translateY(-60vh) scale(1.1);
+        }
+        100% {
+          transform: translateY(100vh);
+          opacity: 0.2;
+        }
+      }
+
+      @keyframes popEffect {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+          filter: brightness(1);
+        }
+        100% {
+          transform: scale(2);
+          opacity: 0;
+          filter: brightness(2);
+        }
+      }
+
+      #menu,
+      #game-over {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: #111;
+        z-index: 999;
+        color: white;
+        text-align: center;
+      }
+
+      #hud {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        padding: 0 10px;
+        color: white;
+      }
+
+      .main-text {
+        font-size: 100px;
+      }
+
+      @media (max-width: 600px) {
+        .fruit,
+        .bomb {
+          font-size: 48px;
+        }
+
+        .main-text {
+          font-size: 50px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HUD -->
+    <div id="hud" class="container-fluid">
+      <div class="row text-center">
+        <div class="col-4" id="scoreboard">Score: 0</div>
+        <div class="col-4" id="lives">❤️❤️❤️</div>
+        <div class="col-4" id="timer">⏱️ 60s</div>
+      </div>
+    </div>
+
+    <!-- Menu -->
+    <div id="menu">
+      <h1 class="main-text text-white">Fruit Ninja</h1>
+      <button class="btn btn-danger mb-2" onclick="startGame()">
+        ▶️ Play Game
+      </button>
+      <div class="form-check form-switch text-white">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="musicToggle"
+          onchange="toggleMusic()"
+        />
+        <label class="form-check-label" for="musicToggle">Music</label>
+      </div>
+    </div>
+
+    <!-- Game Over -->
+    <div id="game-over" style="display: none">
+      <h2 id="game-over-text">Game Over!</h2>
+      <p id="final-score">Your score: 0</p>
+      <button class="btn btn-danger m-2" onclick="startGame()">
+        🔁 Play Again
+      </button>
+      <button class="btn btn-secondary" onclick="goToMenu()">
+        🏠 Return to Menu
+      </button>
+    </div>
+
+    <!-- Sounds -->
+    <audio
+      id="sliceSound"
+      src="https://cdn.pixabay.com/download/audio/2022/03/25/audio_1d07e1e188.mp3?filename=slice-94108.mp3"
+      preload="auto"
+    ></audio>
+    <audio
+      id="bombSound"
+      src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6b90fbb90b.mp3?filename=explosion-6055.mp3"
+      preload="auto"
+    ></audio>
+    <audio
+      id="timeUpSound"
+      src="https://cdn.pixabay.com/download/audio/2022/03/16/audio_3be3b50e57.mp3?filename=game-over-arcade-6435.mp3"
+      preload="auto"
+    ></audio>
+    <audio id="bgMusic" src="background.mp3" loop></audio>
+
+    <script>
+      const fruits = ["🍉", "🍌", "🍎", "🍓", "🍍", "🥝", "🍊"];
+      let score = 0,
+        lives = 3,
+        timeLeft = 60,
+        gameRunning = false,
+        gameInterval,
+        timerInterval;
+
+      const scoreDisplay = document.getElementById("scoreboard");
+      const livesDisplay = document.getElementById("lives");
+      const timerDisplay = document.getElementById("timer");
+      const sliceSound = document.getElementById("sliceSound");
+      const bombSound = document.getElementById("bombSound");
+      const timeUpSound = document.getElementById("timeUpSound");
+      const bgMusic = document.getElementById("bgMusic");
+      const musicToggle = document.getElementById("musicToggle");
+
+      const menuScreen = document.getElementById("menu");
+      const gameOverScreen = document.getElementById("game-over");
+      const gameOverText = document.getElementById("game-over-text");
+      const finalScoreText = document.getElementById("final-score");
+
+      window.addEventListener("DOMContentLoaded", () => {
+        const savedMusic = localStorage.getItem("music");
+        if (savedMusic === "on") {
+          musicToggle.checked = true;
+          toggleMusic();
+        }
+      });
+
+      function toggleMusic() {
+        if (musicToggle.checked) {
+          bgMusic.volume = 0.2;
+          bgMusic.play().catch(() => {});
+          localStorage.setItem("music", "on");
+        } else {
+          bgMusic.pause();
+          localStorage.setItem("music", "off");
+        }
+      }
+
+      function updateScore() {
+        scoreDisplay.textContent = `Score: ${score}`;
+      }
+
+      function updateLives() {
+        livesDisplay.textContent = "❤️".repeat(lives);
+        if (lives <= 0) endGame("💀 Game Over!");
+      }
+
+      function updateTimer() {
+        timerDisplay.textContent = `⏱️ ${timeLeft}s`;
+      }
+
+      function spawnObject() {
+        if (!gameRunning) return;
+
+        const isBomb = Math.random() < 0.15;
+        const obj = document.createElement("div");
+        obj.className = isBomb ? "bomb" : "fruit";
+        obj.textContent = isBomb
+          ? "💣"
+          : fruits[Math.floor(Math.random() * fruits.length)];
+
+        const x = Math.random() * (window.innerWidth - 80);
+        obj.style.left = `${x}px`;
+        obj.style.bottom = `-80px`;
+
+        obj.addEventListener("click", () => {
+          obj.classList.add("sliced");
+          if (isBomb) {
+            bombSound.currentTime = 0;
+            bombSound.play();
+            endGame("💥 You hit a bomb!");
+          } else {
+            sliceSound.currentTime = 0;
+            sliceSound.play();
+            score++;
+            updateScore();
+          }
+          setTimeout(() => obj.remove(), 400);
+        });
+
+        document.body.appendChild(obj);
+
+        setTimeout(() => {
+          if (!obj.classList.contains("sliced") && !isBomb && gameRunning) {
+            lives--;
+            updateLives();
+          }
+          obj.remove();
+        }, 3500);
+      }
+
+      function startGame() {
+        score = 0;
+        lives = 3;
+        timeLeft = 60;
+        gameRunning = true;
+
+        updateScore();
+        updateLives();
+        updateTimer();
+        menuScreen.style.display = "none";
+        gameOverScreen.style.display = "none";
+
+        if (musicToggle.checked) {
+          bgMusic.volume = 0.2;
+          bgMusic.play().catch(() => {});
+        }
+
+        gameInterval = setInterval(spawnObject, 800);
+        timerInterval = setInterval(() => {
+          timeLeft--;
+          updateTimer();
+          if (timeLeft <= 0) endGame("⏰ Time's up!");
+        }, 1000);
+      }
+
+      function endGame(message) {
+        gameRunning = false;
+        clearInterval(gameInterval);
+        clearInterval(timerInterval);
+        bgMusic.pause();
+
+        if (message === "⏰ Time's up!") {
+          timeUpSound.currentTime = 0;
+          timeUpSound.play();
+        }
+
+        gameOverText.textContent = message;
+        finalScoreText.textContent = `Your score: ${score}`;
+        gameOverScreen.style.display = "flex";
+      }
+
+      function goToMenu() {
+        gameOverScreen.style.display = "none";
+        menuScreen.style.display = "flex";
+      }
+    </script>
+  </body>
+</html>

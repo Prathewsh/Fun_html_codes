@@ -1,212 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>3D Dice Roller</title>
-  <style>
-    body {
-      margin: 0;
-      background: #111;
-      color: white;
-      font-family: sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      overflow: hidden;
-      position: relative;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <title>3D Dice Roller</title>
+    <style>
+      body {
+        margin: 0;
+        background: #111;
+        color: white;
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+      }
 
-    /* Fake lighting */
-    body::before {
-      content: "";
-      position: absolute;
-      top: -20%;
-      left: -20%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at 50% 20%, #ffffff44, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
+      /* Fake lighting */
+      body::before {
+        content: "";
+        position: absolute;
+        top: -20%;
+        left: -20%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle at 50% 20%,
+          #ffffff44,
+          transparent 70%
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
 
-    .scene {
-      width: 200px;
-      height: 200px;
-      perspective: 800px;
-      margin-bottom: 40px;
-      z-index: 1;
-    }
+      .scene {
+        width: 200px;
+        height: 200px;
+        perspective: 800px;
+        margin-bottom: 40px;
+        z-index: 1;
+      }
 
-    .cube {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transform: rotateX(0deg) rotateY(0deg);
-      transition: transform 1s ease-in-out;
-    }
+      .cube {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transform: rotateX(0deg) rotateY(0deg);
+        transition: transform 1s ease-in-out;
+      }
 
-    .face {
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      background: white;
-      border-radius: 30px;
-      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+      .face {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background: white;
+        border-radius: 30px;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-    /* Positioning cube faces */
-    .face1  { transform: rotateY(  0deg) translateZ(100px); }
-    .face6  { transform: rotateY(180deg) translateZ(100px); }
-    .face3  { transform: rotateY( 90deg) translateZ(100px); }
-    .face4  { transform: rotateY(-90deg) translateZ(100px); }
-    .face5  { transform: rotateX( 90deg) translateZ(100px); }
-    .face2  { transform: rotateX(-90deg) translateZ(100px); }
+      /* Positioning cube faces */
+      .face1 {
+        transform: rotateY(0deg) translateZ(100px);
+      }
+      .face6 {
+        transform: rotateY(180deg) translateZ(100px);
+      }
+      .face3 {
+        transform: rotateY(90deg) translateZ(100px);
+      }
+      .face4 {
+        transform: rotateY(-90deg) translateZ(100px);
+      }
+      .face5 {
+        transform: rotateX(90deg) translateZ(100px);
+      }
+      .face2 {
+        transform: rotateX(-90deg) translateZ(100px);
+      }
 
-    .pip-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      gap: 10px;
-      width: 100%;
-      height: 100%;
-      padding: 30px;
-      box-sizing: border-box;
-    }
+      .pip-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 10px;
+        width: 100%;
+        height: 100%;
+        padding: 30px;
+        box-sizing: border-box;
+      }
 
-    .pip {
-      width: 20px;
-      height: 20px;
-      background: black;
-      border-radius: 50%;
-    }
+      .pip {
+        width: 20px;
+        height: 20px;
+        background: black;
+        border-radius: 50%;
+      }
 
-    /* Dot positions */
-    .dot-1  { grid-area: 2 / 2; }
-    .dot-2a { grid-area: 1 / 1; }
-    .dot-2b { grid-area: 3 / 3; }
-    .dot-3a { grid-area: 1 / 1; }
-    .dot-3b { grid-area: 2 / 2; }
-    .dot-3c { grid-area: 3 / 3; }
-    .dot-4a { grid-area: 1 / 1; }
-    .dot-4b { grid-area: 1 / 3; }
-    .dot-4c { grid-area: 3 / 1; }
-    .dot-4d { grid-area: 3 / 3; }
-    .dot-5a { grid-area: 1 / 1; }
-    .dot-5b { grid-area: 1 / 3; }
-    .dot-5c { grid-area: 2 / 2; }
-    .dot-5d { grid-area: 3 / 1; }
-    .dot-5e { grid-area: 3 / 3; }
-    .dot-6a { grid-area: 1 / 1; }
-    .dot-6b { grid-area: 2 / 1; }
-    .dot-6c { grid-area: 3 / 1; }
-    .dot-6d { grid-area: 1 / 3; }
-    .dot-6e { grid-area: 2 / 3; }
-    .dot-6f { grid-area: 3 / 3; }
+      /* Dot positions */
+      .dot-1 {
+        grid-area: 2 / 2;
+      }
+      .dot-2a {
+        grid-area: 1 / 1;
+      }
+      .dot-2b {
+        grid-area: 3 / 3;
+      }
+      .dot-3a {
+        grid-area: 1 / 1;
+      }
+      .dot-3b {
+        grid-area: 2 / 2;
+      }
+      .dot-3c {
+        grid-area: 3 / 3;
+      }
+      .dot-4a {
+        grid-area: 1 / 1;
+      }
+      .dot-4b {
+        grid-area: 1 / 3;
+      }
+      .dot-4c {
+        grid-area: 3 / 1;
+      }
+      .dot-4d {
+        grid-area: 3 / 3;
+      }
+      .dot-5a {
+        grid-area: 1 / 1;
+      }
+      .dot-5b {
+        grid-area: 1 / 3;
+      }
+      .dot-5c {
+        grid-area: 2 / 2;
+      }
+      .dot-5d {
+        grid-area: 3 / 1;
+      }
+      .dot-5e {
+        grid-area: 3 / 3;
+      }
+      .dot-6a {
+        grid-area: 1 / 1;
+      }
+      .dot-6b {
+        grid-area: 2 / 1;
+      }
+      .dot-6c {
+        grid-area: 3 / 1;
+      }
+      .dot-6d {
+        grid-area: 1 / 3;
+      }
+      .dot-6e {
+        grid-area: 2 / 3;
+      }
+      .dot-6f {
+        grid-area: 3 / 3;
+      }
 
-    button {
-      padding: 12px 24px;
-      font-size: 1.2rem;
-      border: none;
-      border-radius: 8px;
-      background: #29b6f6;
-      color: white;
-      cursor: pointer;
-      transition: background 0.3s;
-      z-index: 1;
-    }
+      button {
+        padding: 12px 24px;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 8px;
+        background: #29b6f6;
+        color: white;
+        cursor: pointer;
+        transition: background 0.3s;
+        z-index: 1;
+      }
 
-    button:hover {
-      background: #0288d1;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="scene">
-    <div class="cube" id="cube">
-      <!-- Face 1 -->
-      <div class="face face1">
-        <div class="pip-grid">
-          <div class="pip dot-1"></div>
+      button:hover {
+        background: #0288d1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scene">
+      <div class="cube" id="cube">
+        <!-- Face 1 -->
+        <div class="face face1">
+          <div class="pip-grid">
+            <div class="pip dot-1"></div>
+          </div>
         </div>
-      </div>
-      <!-- Face 2 -->
-      <div class="face face2">
-        <div class="pip-grid">
-          <div class="pip dot-2a"></div>
-          <div class="pip dot-2b"></div>
+        <!-- Face 2 -->
+        <div class="face face2">
+          <div class="pip-grid">
+            <div class="pip dot-2a"></div>
+            <div class="pip dot-2b"></div>
+          </div>
         </div>
-      </div>
-      <!-- Face 3 -->
-      <div class="face face3">
-        <div class="pip-grid">
-          <div class="pip dot-3a"></div>
-          <div class="pip dot-3b"></div>
-          <div class="pip dot-3c"></div>
+        <!-- Face 3 -->
+        <div class="face face3">
+          <div class="pip-grid">
+            <div class="pip dot-3a"></div>
+            <div class="pip dot-3b"></div>
+            <div class="pip dot-3c"></div>
+          </div>
         </div>
-      </div>
-      <!-- Face 4 -->
-      <div class="face face4">
-        <div class="pip-grid">
-          <div class="pip dot-4a"></div>
-          <div class="pip dot-4b"></div>
-          <div class="pip dot-4c"></div>
-          <div class="pip dot-4d"></div>
+        <!-- Face 4 -->
+        <div class="face face4">
+          <div class="pip-grid">
+            <div class="pip dot-4a"></div>
+            <div class="pip dot-4b"></div>
+            <div class="pip dot-4c"></div>
+            <div class="pip dot-4d"></div>
+          </div>
         </div>
-      </div>
-      <!-- Face 5 -->
-      <div class="face face5">
-        <div class="pip-grid">
-          <div class="pip dot-5a"></div>
-          <div class="pip dot-5b"></div>
-          <div class="pip dot-5c"></div>
-          <div class="pip dot-5d"></div>
-          <div class="pip dot-5e"></div>
+        <!-- Face 5 -->
+        <div class="face face5">
+          <div class="pip-grid">
+            <div class="pip dot-5a"></div>
+            <div class="pip dot-5b"></div>
+            <div class="pip dot-5c"></div>
+            <div class="pip dot-5d"></div>
+            <div class="pip dot-5e"></div>
+          </div>
         </div>
-      </div>
-      <!-- Face 6 -->
-      <div class="face face6">
-        <div class="pip-grid">
-          <div class="pip dot-6a"></div>
-          <div class="pip dot-6b"></div>
-          <div class="pip dot-6c"></div>
-          <div class="pip dot-6d"></div>
-          <div class="pip dot-6e"></div>
-          <div class="pip dot-6f"></div>
+        <!-- Face 6 -->
+        <div class="face face6">
+          <div class="pip-grid">
+            <div class="pip dot-6a"></div>
+            <div class="pip dot-6b"></div>
+            <div class="pip dot-6c"></div>
+            <div class="pip dot-6d"></div>
+            <div class="pip dot-6e"></div>
+            <div class="pip dot-6f"></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <button onclick="rollDice()">🎲 Roll Dice</button>
+    <button onclick="rollDice()">🎲 Roll Dice</button>
 
-  <script>
-    const cube = document.getElementById('cube');
+    <script>
+      const cube = document.getElementById("cube");
 
-    const rotations = {
-      1: [0, 0],
-      2: [-90, 0],
-      3: [0, -90],
-      4: [0, 90],
-      5: [90, 0],
-      6: [0, 180]
-    };
+      const rotations = {
+        1: [0, 0],
+        2: [-90, 0],
+        3: [0, -90],
+        4: [0, 90],
+        5: [90, 0],
+        6: [0, 180],
+      };
 
-    function rollDice() {
-      const result = Math.floor(Math.random() * 6) + 1;
-      const [x, y] = rotations[result];
-      const extraX = 360 * Math.floor(Math.random() * 2 + 1);
-      const extraY = 360 * Math.floor(Math.random() * 2 + 1);
+      function rollDice() {
+        const result = Math.floor(Math.random() * 6) + 1;
+        const [x, y] = rotations[result];
+        const extraX = 360 * Math.floor(Math.random() * 2 + 1);
+        const extraY = 360 * Math.floor(Math.random() * 2 + 1);
 
-      cube.style.transform = `rotateX(${x + extraX}deg) rotateY(${y + extraY}deg)`;
-    }
-  </script>
-
-</body>
+        cube.style.transform = `rotateX(${x + extraX}deg) rotateY(${
+          y + extraY
+        }deg)`;
+      }
+    </script>
+  </body>
 </html>

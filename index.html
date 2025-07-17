@@ -1,233 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>📂 What’s Inside?</title>
-  <style>
-    body {
-      background: linear-gradient(to right, #89f7fe, #66a6ff);
-      font-family: 'Segoe UI', Arial, sans-serif;
-      margin: 0;
-      padding: 40px 20px;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/logo.webp" />
+    <title>Markuply</title>
+    <style>
+      body {
+        background: linear-gradient(to right, #89f7fe, #66a6ff);
+        font-family: "Segoe UI", Arial, sans-serif;
+        margin: 0;
+        padding: 40px 20px;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-    h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-      text-decoration: none;
-    }
+      h1 {
+        font-size: 48px;
+        margin-bottom: 10px;
+        text-decoration: none;
+      }
 
-    p {
-      font-size: 18px;
-      margin-bottom: 40px;
-      text-align: center;
-      max-width: 600px;
-    }
+      p {
+        font-size: 18px;
+        margin-bottom: 40px;
+        text-align: center;
+        max-width: 600px;
+      }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      width: 100%;
-      max-width: 1000px;
-    }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        width: 100%;
+        max-width: 1000px;
+      }
 
-    .card {
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      padding: 30px 20px;
-      text-align: center;
-      color: inherit;
-      position: relative;
-      transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer;
-      text-decoration: none; /* Remove underline */
-    }
+      .card {
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        padding: 30px 20px;
+        text-align: center;
+        color: inherit;
+        position: relative;
+        transition: transform 0.2s, box-shadow 0.2s;
+        cursor: pointer;
+        text-decoration: none; /* Remove underline */
+      }
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 20px rgba(0,0,0,0.15);
-    }
+      .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+      }
 
-    .card span {
-      font-size: 40px;
-      display: block;
-      margin-bottom: 12px;
-    }
+      .card span {
+        font-size: 40px;
+        display: block;
+        margin-bottom: 12px;
+      }
 
-    .card h2 {
-      font-size: 20px;
-      margin: 0;
-      text-decoration: none;
-    }
+      .card h2 {
+        font-size: 20px;
+        margin: 0;
+        text-decoration: none;
+      }
 
-    .badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: #ff4d4f;
-      color: #fff;
-      font-size: 12px;
-      padding: 4px 8px;
-      border-radius: 20px;
-    }
+      .badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: #ff4d4f;
+        color: #fff;
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 20px;
+      }
 
-    section {
-      width: 100%;
-      max-width: 1000px;
-      margin-bottom: 60px;
-    }
+      section {
+        width: 100%;
+        max-width: 1000px;
+        margin-bottom: 60px;
+      }
 
-    section h2 {
-      font-size: 32px;
-      margin-bottom: 25px;
-      padding-left: 12px;
-      display: inline-block;
-      text-decoration: none;
-    }
+      section h2 {
+        font-size: 32px;
+        margin-bottom: 25px;
+        padding-left: 12px;
+        display: inline-block;
+        text-decoration: none;
+      }
 
-    footer {
-      margin-top: 50px;
-      font-size: 14px;
-      color: #777;
-    }
+      footer {
+        margin-top: 50px;
+        font-size: 14px;
+        color: #333;
+        font-weight: bold;
+      }
 
-    /* Ensure all links never have underline */
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+      /* Ensure all links never have underline */
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
 
-    a:hover {
-      text-decoration: none;
-    }
+      a:hover {
+        text-decoration: none;
+      }
 
-    a * {
-      text-decoration: none;
-    }
-  </style>
-</head>
-<body>
-  <h1>📂 What’s Inside?</h1>
-  <p>A collection of lighthearted mini web projects to make you and your friends smile!</p>
+      a * {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to Markuply</h1>
+    <p>
+      📂 Whats inside ? A collection of lighthearted mini web projects to make
+      you and your friends smile!
+    </p>
 
-  <section>
-    <h2>Ready to Play</h2>
-    <div class="grid">
-      <a href="birthday_letter/index.html" class="card">
-        <span>💌</span>
-        <h2>Birthday Letter</h2>
-      </a>
-      <a href="date_request.html" class="card">
-        <span>❤️</span>
-        <h2>Ask on a Date</h2>
-      </a>
-      <a href="cat_confetti_loop.html" class="card">
-        <span>🎉</span>
-        <h2>Confetti Cat</h2>
-      </a>
-      <a href="coin_flip/coin_flip.html" class="card">
-        <span>🪙</span>
-        <h2>Coin Flip</h2>
-      </a>
-      <a href="roller.html" class="card">
-        <span>🎲</span>
-        <h2>Dice Roller</h2>
-      </a>
-      <a href="piano_keys.html" class="card">
-        <span>🎹</span>
-        <h2>Piano Keys</h2>
-      </a>
-      <a href="sounboard/index.html" class="card">
-        <span>🎵</span>
-        <h2>Soundboard</h2>
-      </a>
-    </div>
-  </section>
-
-  <section>
-    <h2>Upcoming</h2>
-    <div class="grid">
-      <div class="card">
-        <span>🐱</span>
-        <h2>Dancing Cat Meme</h2>
-        <div class="badge">Coming Soon</div>
+    <section>
+      <h2>Ready to Play</h2>
+      <div class="grid">
+        <a href="birthday_letter/index.html" class="card">
+          <span>💌</span>
+          <h2>Birthday Letter</h2>
+        </a>
+        <a href="date_request.html" class="card">
+          <span>❤️</span>
+          <h2>Ask on a Date</h2>
+        </a>
+        <a href="cat_confetti_loop.html" class="card">
+          <span>🎉</span>
+          <h2>Confetti Cat</h2>
+        </a>
+        <a href="coin_flip/coin_flip.html" class="card">
+          <span>🪙</span>
+          <h2>Coin Flip</h2>
+        </a>
+        <a href="roller.html" class="card">
+          <span>🎲</span>
+          <h2>Dice Roller</h2>
+        </a>
+        <a href="piano_keys.html" class="card">
+          <span>🎹</span>
+          <h2>Piano Keys</h2>
+        </a>
+        <a href="sounboard/index.html" class="card">
+          <span>🎵</span>
+          <h2>Soundboard</h2>
+        </a>
+        <a href="Snake.html" class="card">
+          <span>🐍</span>
+          <h2>Snake Game</h2>
+        </a>
+        <a href="RPS.html" class="card">
+          <span>✂️</span>
+          <h2>Rock Paper Scissors</h2>
+        </a>
+        <a href="fruit_ninja/index.html" class="card">
+          <span>🍉</span>
+          <h2>Fruit Ninja</h2>
+        </a>
       </div>
-      <div class="card">
-        <span>✂️</span>
-        <h2>Rock Paper Scissors</h2>
-        <div class="badge">Coming Soon</div>
-      </div>
-      <div class="card">
-        <span>🥠</span>
-        <h2>Fortune Cookie</h2>
-        <div class="badge">Coming Soon</div>
-      </div>
-      <div class="card">
-        <span>🎱</span>
-        <h2>Magic 8-Ball</h2>
-        <div class="badge">Coming Soon</div>
-      </div>
-      <div class="card">
-        <span>🧽</span>
-        <h2>Scratch Card</h2>
-        <div class="badge">Coming Soon</div>
-      </div>
-      <div class="card">
-        <span>🧩</span>
-        <h2>Memory Match</h2>
-        <div class="badge">Coming Soon</div>
-      </div>
-      <div class="card">
-        <span>🎰</span>
-        <h2>Slot Machine</h2>
-        <div class="badge">Coming Soon</div>
-      </div>
-      <div class="card">
-        <span>🎟️</span>
-        <h2>Random Name Picker</h2>
-        <div class="badge">Coming Soon</div>
-      </div>
-      <div class="card">
-        <span>❓</span>
-        <h2>Quick Quiz</h2>
-        <div class="badge">Coming Soon</div>
-      </div>
-      <div class="card">
-        <span>🎈</span>
-        <h2>Balloon Pop</h2>
-        <div class="badge">Coming Soon</div>
-      </div>
-      <div class="card">
-        <span>⚡</span>
-        <h2>Reaction Timer</h2>
-        <div class="badge">Coming Soon</div>
-      </div>
-      <div class="card">
-        <span>🌈</span>
-        <h2>Color Picker Game</h2>
-        <div class="badge">Coming Soon</div>
-      </div>
-      <div class="card">
-        <span>🪄</span>
-        <h2>Level Up</h2>
-        <div class="badge">Coming Soon</div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    &copy; <span id="year"></span> Prathewsh S Babu — All fun, no stress!
-  </footer>
+    <section>
+      <h2>Upcoming</h2>
+      <div class="grid">
+        <div class="card">
+          <span>♟</span>
+          <h2>Chess</h2>
+          <div class="badge">Coming Soon</div>
+        </div>
+        <div class="card">
+          <span>🐱</span>
+          <h2>Dancing Cat Meme</h2>
+          <div class="badge">Coming Soon</div>
+        </div>
+        <div class="card">
+          <span>🥠</span>
+          <h2>Fortune Cookie</h2>
+          <div class="badge">Coming Soon</div>
+        </div>
+        <div class="card">
+          <span>🎱</span>
+          <h2>Magic 8-Ball</h2>
+          <div class="badge">Coming Soon</div>
+        </div>
+        <div class="card">
+          <span>🧽</span>
+          <h2>Scratch Card</h2>
+          <div class="badge">Coming Soon</div>
+        </div>
+        <div class="card">
+          <span>🧩</span>
+          <h2>Memory Match</h2>
+          <div class="badge">Coming Soon</div>
+        </div>
+        <div class="card">
+          <span>🎰</span>
+          <h2>Slot Machine</h2>
+          <div class="badge">Coming Soon</div>
+        </div>
+        <div class="card">
+          <span>🎟️</span>
+          <h2>Random Name Picker</h2>
+          <div class="badge">Coming Soon</div>
+        </div>
+        <div class="card">
+          <span>❓</span>
+          <h2>Quick Quiz</h2>
+          <div class="badge">Coming Soon</div>
+        </div>
+        <div class="card">
+          <span>⚡</span>
+          <h2>Reaction Timer</h2>
+          <div class="badge">Coming Soon</div>
+        </div>
+        <div class="card">
+          <span>🌈</span>
+          <h2>Color Picker Game</h2>
+          <div class="badge">Coming Soon</div>
+        </div>
+        <div class="card">
+          <span>🪄</span>
+          <h2>Level Up</h2>
+          <div class="badge">Coming Soon</div>
+        </div>
+      </div>
+    </section>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-</body>
+    <footer>
+      &copy; <span id="year"></span> Markuply — All fun, no stress!
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
 </html>

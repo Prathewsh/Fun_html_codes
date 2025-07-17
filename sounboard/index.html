@@ -1,216 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>My Soundboard</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 30px;
-      background: #0d0d0d;
-      color: #fff;
-      font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      color: #00ffe0;
-      margin-bottom: 30px;
-      text-shadow: 0 0 10px #00ffe066;
-    }
-
-    .soundboard {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      grid-auto-rows: 100px;
-      gap: 15px;
-      width: 100%;
-      max-width: 900px;
-      margin-bottom: 50px;
-    }
-
-    .pad {
-      background: #1a1a1a;
-      border: 2px solid #00ffe0;
-      border-radius: 12px;
-      text-align: center;
-      font-size: 1rem;
-      color: #fff;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      box-shadow: 0 0 10px #00ffe033;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-transform: uppercase;
-      padding: 10px;
-    }
-
-    .pad:hover {
-      background: #00ffe0;
-      color: #000;
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #00ffe0aa;
-    }
-
-    .pad:active {
-      transform: scale(0.95);
-      box-shadow: 0 0 10px #00ffe099 inset;
-      background: #00ccc0;
-    }
-
-    .knob-panel {
-      display: flex;
-      justify-content: center;
-      gap: 60px;
-      flex-wrap: wrap;
-    }
-
-    .knob-container {
-      text-align: center;
-    }
-
-    .knob {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      background: #1e1e1e;
-      border: 4px solid #00ffe0;
-      position: relative;
-      box-shadow: 0 0 15px #00ffe033;
-    }
-
-    .knob input[type=range] {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      opacity: 0;
-      cursor: pointer;
-    }
-
-    .needle {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      width: 6px;
-      height: 30px;
-      background: #00ffe0;
-      border-radius: 3px;
-      transform-origin: bottom center;
-      transform: rotate(-135deg);
-      transition: transform 0.1s linear;
-    }
-
-    .label {
-      margin-top: 12px;
-      color: #ccc;
-      font-size: 1rem;
-    }
-
-    @media (max-width: 768px) {
-      .soundboard {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Soundboard</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 30px;
+        background: #0d0d0d;
+        color: #fff;
+        font-family: "Segoe UI", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
-    }
 
-    @media (max-width: 500px) {
       h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
+        color: #00ffe0;
+        margin-bottom: 30px;
+        text-shadow: 0 0 10px #00ffe066;
       }
+
+      .soundboard {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        grid-auto-rows: 100px;
+        gap: 15px;
+        width: 100%;
+        max-width: 900px;
+        margin-bottom: 50px;
+      }
+
       .pad {
-        font-size: 0.85rem;
-        padding: 5px;
+        background: #1a1a1a;
+        border: 2px solid #00ffe0;
+        border-radius: 12px;
+        text-align: center;
+        font-size: 1rem;
+        color: #fff;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        box-shadow: 0 0 10px #00ffe033;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+        padding: 10px;
       }
-    }
-  </style>
-</head>
-<body>
 
-  <h1>Soundboard</h1>
+      .pad:hover {
+        background: #00ffe0;
+        color: #000;
+        transform: scale(1.05);
+        box-shadow: 0 0 20px #00ffe0aa;
+      }
 
-  <!-- Soundboard Pads -->
-  <div class="soundboard">
-    <div class="pad" onclick="playSound('sound1')">Let Me Know</div>
-    <div class="pad" onclick="playSound('sound2')">Whaat ive doneee</div>
-    <div class="pad" onclick="playSound('sound3')">Wide putin</div>
-    <div class="pad" onclick="playSound('sound4')">Scream</div>
-    <div class="pad" onclick="playSound('sound5')">Boing</div>
-    <div class="pad" onclick="playSound('sound6')">Bark</div>
-    <div class="pad" onclick="playSound('sound7')">Clap</div>
-    <div class="pad" onclick="playSound('sound8')">Womp</div>
-    <div class="pad" onclick="playSound('sound9')">Alert</div>
-    <div class="pad" onclick="playSound('sound10')">Snap</div>
-    <div class="pad" onclick="playSound('sound11')">Drop</div>
-    <div class="pad" onclick="playSound('sound12')">Laser</div>
-  </div>
+      .pad:active {
+        transform: scale(0.95);
+        box-shadow: 0 0 10px #00ffe099 inset;
+        background: #00ccc0;
+      }
 
-  <!-- Knobs Below Pads -->
-  <div class="knob-panel">
-    <div class="knob-container">
-      <div class="knob" id="volKnob">
-        <div class="needle" id="volNeedle"></div>
-        <input type="range" min="0" max="1" step="0.01" value="1" id="volumeControl" oninput="updateVolumeKnob(this)">
-      </div>
-      <div class="label">🔊 Volume</div>
+      .knob-panel {
+        display: flex;
+        justify-content: center;
+        gap: 60px;
+        flex-wrap: wrap;
+      }
+
+      .knob-container {
+        text-align: center;
+      }
+
+      .knob {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: #1e1e1e;
+        border: 4px solid #00ffe0;
+        position: relative;
+        box-shadow: 0 0 15px #00ffe033;
+      }
+
+      .knob input[type="range"] {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .needle {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        width: 6px;
+        height: 30px;
+        background: #00ffe0;
+        border-radius: 3px;
+        transform-origin: bottom center;
+        transform: rotate(-135deg);
+        transition: transform 0.1s linear;
+      }
+
+      .label {
+        margin-top: 12px;
+        color: #ccc;
+        font-size: 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .soundboard {
+          grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        }
+      }
+
+      @media (max-width: 500px) {
+        h1 {
+          font-size: 2rem;
+        }
+        .pad {
+          font-size: 0.85rem;
+          padding: 5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Soundboard</h1>
+
+    <!-- Soundboard Pads -->
+    <div class="soundboard">
+      <div class="pad" onclick="playSound('sound1')">Let Me Know</div>
+      <div class="pad" onclick="playSound('sound2')">Whaat ive doneee</div>
+      <div class="pad" onclick="playSound('sound3')">Wide putin</div>
+      <div class="pad" onclick="playSound('sound4')">Scream</div>
+      <div class="pad" onclick="playSound('sound5')">Boing</div>
+      <div class="pad" onclick="playSound('sound6')">Bark</div>
+      <div class="pad" onclick="playSound('sound7')">Clap</div>
+      <div class="pad" onclick="playSound('sound8')">Womp</div>
+      <div class="pad" onclick="playSound('sound9')">Alert</div>
+      <div class="pad" onclick="playSound('sound10')">Snap</div>
+      <div class="pad" onclick="playSound('sound11')">Drop</div>
+      <div class="pad" onclick="playSound('sound12')">Laser</div>
     </div>
 
-    <div class="knob-container">
-      <div class="knob" id="speedKnob">
-        <div class="needle" id="speedNeedle"></div>
-        <input type="range" min="0.5" max="2" step="0.01" value="1" id="speedControl" oninput="updateSpeedKnob(this)">
+    <!-- Knobs Below Pads -->
+    <div class="knob-panel">
+      <div class="knob-container">
+        <div class="knob" id="volKnob">
+          <div class="needle" id="volNeedle"></div>
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value="1"
+            id="volumeControl"
+            oninput="updateVolumeKnob(this)"
+          />
+        </div>
+        <div class="label">🔊 Volume</div>
       </div>
-      <div class="label">🎚️ Speed</div>
+
+      <div class="knob-container">
+        <div class="knob" id="speedKnob">
+          <div class="needle" id="speedNeedle"></div>
+          <input
+            type="range"
+            min="0.5"
+            max="2"
+            step="0.01"
+            value="1"
+            id="speedControl"
+            oninput="updateSpeedKnob(this)"
+          />
+        </div>
+        <div class="label">🎚️ Speed</div>
+      </div>
     </div>
-  </div>
 
-  <!-- Audio Elements -->
-  <audio id="sound1" src="assets/sounds/let_me_know.mp3"></audio>
-  <audio id="sound2" src="assets/sounds/what_ive_done.mp3"></audio>
-  <audio id="sound3" src="assets/sounds/wide_putin.mp3"></audio>
-  <audio id="sound4" src="scream.mp3"></audio>
-  <audio id="sound5" src="boing.mp3"></audio>
-  <audio id="sound6" src="bark.mp3"></audio>
-  <audio id="sound7" src="clap.mp3"></audio>
-  <audio id="sound8" src="womp.mp3"></audio>
-  <audio id="sound9" src="alert.mp3"></audio>
-  <audio id="sound10" src="snap.mp3"></audio>
-  <audio id="sound11" src="drop.mp3"></audio>
-  <audio id="sound12" src="laser.mp3"></audio>
+    <!-- Audio Elements -->
+    <audio id="sound1" src="assets/sounds/let_me_know.mp3"></audio>
+    <audio id="sound2" src="assets/sounds/what_ive_done.mp3"></audio>
+    <audio id="sound3" src="assets/sounds/wide_putin.mp3"></audio>
+    <audio id="sound4" src="scream.mp3"></audio>
+    <audio id="sound5" src="boing.mp3"></audio>
+    <audio id="sound6" src="bark.mp3"></audio>
+    <audio id="sound7" src="clap.mp3"></audio>
+    <audio id="sound8" src="womp.mp3"></audio>
+    <audio id="sound9" src="alert.mp3"></audio>
+    <audio id="sound10" src="snap.mp3"></audio>
+    <audio id="sound11" src="drop.mp3"></audio>
+    <audio id="sound12" src="laser.mp3"></audio>
 
-  <script>
-    let volume = 1;
-    let speed = 1;
+    <script>
+      let volume = 1;
+      let speed = 1;
 
-    function playSound(id) {
-      const sound = document.getElementById(id);
-      sound.pause();
-      sound.currentTime = 0;
-      sound.volume = volume;
-      sound.playbackRate = speed;
-      sound.play();
-    }
+      function playSound(id) {
+        const sound = document.getElementById(id);
+        sound.pause();
+        sound.currentTime = 0;
+        sound.volume = volume;
+        sound.playbackRate = speed;
+        sound.play();
+      }
 
-    function updateVolumeKnob(input) {
-      volume = parseFloat(input.value);
-      const angle = volume * 270 - 135;
-      document.getElementById('volNeedle').style.transform = `rotate(${angle}deg)`;
-    }
+      function updateVolumeKnob(input) {
+        volume = parseFloat(input.value);
+        const angle = volume * 270 - 135;
+        document.getElementById(
+          "volNeedle"
+        ).style.transform = `rotate(${angle}deg)`;
+      }
 
-    function updateSpeedKnob(input) {
-      speed = parseFloat(input.value);
-      const angle = ((speed - 0.5) / 1.5) * 270 - 135;
-      document.getElementById('speedNeedle').style.transform = `rotate(${angle}deg)`;
-    }
+      function updateSpeedKnob(input) {
+        speed = parseFloat(input.value);
+        const angle = ((speed - 0.5) / 1.5) * 270 - 135;
+        document.getElementById(
+          "speedNeedle"
+        ).style.transform = `rotate(${angle}deg)`;
+      }
 
-    // Set initial needle positions
-    window.onload = () => {
-      updateVolumeKnob(document.getElementById('volumeControl'));
-      updateSpeedKnob(document.getElementById('speedControl'));
-    };
-  </script>
-
-</body>
+      // Set initial needle positions
+      window.onload = () => {
+        updateVolumeKnob(document.getElementById("volumeControl"));
+        updateSpeedKnob(document.getElementById("speedControl"));
+      };
+    </script>
+  </body>
 </html>
