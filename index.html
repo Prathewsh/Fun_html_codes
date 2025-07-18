@@ -3,293 +3,263 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="./assets/logo.webp" />
+    <link rel="icon" href="assets/logo.webp" />
     <title>Markuply</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
     <style>
-      * {
-        box-sizing: border-box;
-      }
-
       body {
-        background: linear-gradient(to right, #89f7fe, #66a6ff);
-        font-family: "Segoe UI", Arial, sans-serif;
         margin: 0;
-        padding-top: 80px; /* space for sticky header */
-        color: #333;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        font-family: "Segoe UI", sans-serif;
+        background-color: #0c0c0d;
+        color: #f9f9fa;
       }
 
-      header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(6px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 15px 20px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        z-index: 1000;
+      nav.navbar {
+        background-color: #1b1b1d;
+        padding: 1rem 2rem;
       }
 
-      nav a {
-        margin: 0 15px;
+      nav .navbar-brand {
         font-weight: bold;
-        color: #333;
-        text-decoration: none;
-        font-size: 16px;
+        font-size: 1.4rem;
+        color: #fff;
       }
 
-      nav a:hover {
-        color: #6c63ff;
+      nav .nav-link {
+        color: #d7d7db !important;
+        margin-left: 1rem;
       }
 
-      h1 {
-        font-size: 48px;
-        margin-bottom: 10px;
-      }
-
-      p {
-        font-size: 18px;
-        margin-bottom: 40px;
+      .hero {
+        padding: 4rem 2rem 2rem;
         text-align: center;
-        max-width: 600px;
       }
 
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 20px;
-        width: 100%;
-        max-width: 1000px;
+      .hero h1 {
+        font-size: 2.8rem;
+        font-weight: 600;
+        color: #ffffff;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        color: #d7d7db;
+      }
+
+      .card-grid {
+        padding: 2rem 1rem;
       }
 
       .card {
-        background: #ffffff;
-        border-radius: 16px;
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-        padding: 30px 20px;
-        text-align: center;
-        color: inherit;
-        position: relative;
-        transition: transform 0.2s, box-shadow 0.2s;
-        cursor: pointer;
-        text-decoration: none;
+        background-color: #1e1e20;
+        color: #fff;
+        border: none;
+        transition: transform 0.2s;
       }
 
       .card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
-      }
-
-      .card span {
-        font-size: 40px;
-        display: block;
-        margin-bottom: 12px;
-      }
-
-      .card h2 {
-        font-size: 20px;
-        margin: 0;
-      }
-
-      .badge {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: #ff4d4f;
-        color: #fff;
-        font-size: 12px;
-        padding: 4px 8px;
-        border-radius: 20px;
-      }
-
-      section {
-        width: 100%;
-        max-width: 1000px;
-        margin-bottom: 60px;
-      }
-
-      section h2 {
-        font-size: 32px;
-        margin-bottom: 25px;
-        padding-left: 12px;
-        display: inline-block;
+        transform: translateY(-4px);
+        box-shadow: 0 0 0.5rem #3b82f6;
       }
 
       footer {
-        margin-top: 60px;
-        padding: 20px;
-        font-size: 14px;
-        color: #333;
+        background-color: #1b1b1d;
+        color: #cfcfd1;
+        padding: 3rem 2rem 2rem;
+      }
+
+      .footer-logo {
+        font-size: 1.2rem;
         font-weight: bold;
-        text-align: center;
-        width: 100%;
+        color: #fff;
       }
 
-      footer a {
-        color: #333;
+      .footer-social i {
+        font-size: 1.3rem;
+        margin-right: 0.6rem;
+        color: #fff;
+      }
+
+      .footer-links a {
+        display: block;
+        color: #cfcfd1;
         text-decoration: none;
-        margin: 0 10px;
-        font-weight: bold;
+        margin: 0.3rem 0;
       }
 
-      footer a:hover {
-        color: #6c63ff;
+      .footer-bottom {
+        border-top: 1px solid #444;
+        padding-top: 1rem;
+        margin-top: 2rem;
+        font-size: 0.875rem;
       }
 
-      a {
+      .card-links,
+      .card-links:hover {
         text-decoration: none;
-        color: inherit;
+      }
+
+      a:hover {
+        text-decoration: underline;
       }
     </style>
   </head>
   <body>
-    <!-- HEADER -->
-    <header>
-      <nav>
-        <a href="index.html">🏠 Home</a>
-        <a href="about.html">📖 About</a>
-        <a href="https://github.com/Prathewsh/Fun_html_codes" target="_blank"
-          >🌐 GitHub</a
-        >
+    <!-- Main Layout Wrapper -->
+    <div class="page-wrap d-flex flex-column min-vh-100">
+      <!-- Header -->
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand me-4" href="#">Markuply</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-between"
+            id="navbarNav"
+          >
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="Playground/index.html">Playground</a>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="#">Learn</a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Community</a>
+              </li>
+            </ul>
+            <div class="d-flex">
+              <a class="nav-link" href="#">View on Github</a>
+            </div>
+          </div>
+        </div>
       </nav>
-    </header>
 
-    <!-- MAIN CONTENT -->
-    <h1>Welcome to Markuply</h1>
-    <p>
-      📂 What's inside? A collection of lighthearted mini web projects to make
-      you and your friends smile!
-    </p>
+      <!-- Hero -->
+      <section class="hero">
+        <h1>Your blueprint for a better web.</h1>
+        <p>
+          A fun, beginner-friendly space to learn, play, and build — totally
+          free, no ads ever.
+        </p>
+      </section>
 
-    <section>
-      <h2>Ready to Play</h2>
-      <div class="grid">
-        <a href="birthday_letter/index.html" class="card">
-          <span>💌</span>
-          <h2>Birthday Letter</h2>
-        </a>
-        <a href="date_request.html" class="card">
-          <span>❤️</span>
-          <h2>Ask on a Date</h2>
-        </a>
-        <a href="cat_confetti_loop.html" class="card">
-          <span>🎉</span>
-          <h2>Confetti Cat</h2>
-        </a>
-        <a href="coin_flip/coin_flip.html" class="card">
-          <span>🪙</span>
-          <h2>Coin Flip</h2>
-        </a>
-        <a href="roller.html" class="card">
-          <span>🎲</span>
-          <h2>Dice Roller</h2>
-        </a>
-        <a href="piano_keys.html" class="card">
-          <span>🎹</span>
-          <h2>Piano Keys</h2>
-        </a>
-        <a href="sounboard/index.html" class="card">
-          <span>🎵</span>
-          <h2>Soundboard</h2>
-        </a>
-        <a href="Snake.html" class="card">
-          <span>🐍</span>
-          <h2>Snake Game</h2>
-        </a>
-        <a href="RPS.html" class="card">
-          <span>✂️</span>
-          <h2>Rock Paper Scissors</h2>
-        </a>
-        <a href="fruit_ninja/index.html" class="card">
-          <span>🍉</span>
-          <h2>Fruit Ninja</h2>
-        </a>
-      </div>
-    </section>
+      <!-- About Section -->
+      <section class="container my-5">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-8">
+            <p class="text-secondary">
+              No frameworks, no pressure — just pure HTML, CSS, and JavaScript
+              magic. Explore games, try mini projects, or share something
+              awesome with the community. Markuply is all about learning by
+              doing — the fun way.
+            </p>
+          </div>
+        </div>
+      </section>
 
-    <section>
-      <h2>Upcoming</h2>
-      <div class="grid">
-        <div class="card">
-          <span>♟</span>
-          <h2>Chess</h2>
-          <div class="badge">Coming Soon</div>
+      <!-- Cards -->
+      <!-- Cards -->
+      <section class="container card-grid flex-grow-1">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <a class="card-links" href="Learn/index.html">
+              <div class="card p-3">
+                <h5>Jump In</h5>
+                <p>
+                  New to coding? No worries! Start with simple HTML, CSS, and JS
+                  projects — learn by doing in minutes.
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a class="card-links" href="Playground/index.html">
+              <div class="card p-3">
+                <h5>Playground</h5>
+                <p>
+                  Try out fun mini-games and creative tools. It's your sandbox
+                  to experiment, play, and learn.
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <div class="card p-3">
+              <h5>Learn & Share</h5>
+              <p>
+                Explore friendly guides, mini challenges, and community-shared
+                code snippets — all in one place.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <span>🐱</span>
-          <h2>Dancing Cat Meme</h2>
-          <div class="badge">Coming Soon</div>
-        </div>
-        <div class="card">
-          <span>🥠</span>
-          <h2>Fortune Cookie</h2>
-          <div class="badge">Coming Soon</div>
-        </div>
-        <div class="card">
-          <span>🎱</span>
-          <h2>Magic 8-Ball</h2>
-          <div class="badge">Coming Soon</div>
-        </div>
-        <div class="card">
-          <span>🧽</span>
-          <h2>Scratch Card</h2>
-          <div class="badge">Coming Soon</div>
-        </div>
-        <div class="card">
-          <span>🧩</span>
-          <h2>Memory Match</h2>
-          <div class="badge">Coming Soon</div>
-        </div>
-        <div class="card">
-          <span>🎰</span>
-          <h2>Slot Machine</h2>
-          <div class="badge">Coming Soon</div>
-        </div>
-        <div class="card">
-          <span>🎟️</span>
-          <h2>Random Name Picker</h2>
-          <div class="badge">Coming Soon</div>
-        </div>
-        <div class="card">
-          <span>❓</span>
-          <h2>Quick Quiz</h2>
-          <div class="badge">Coming Soon</div>
-        </div>
-        <div class="card">
-          <span>⚡</span>
-          <h2>Reaction Timer</h2>
-          <div class="badge">Coming Soon</div>
-        </div>
-        <div class="card">
-          <span>🌈</span>
-          <h2>Color Picker Game</h2>
-          <div class="badge">Coming Soon</div>
-        </div>
-        <div class="card">
-          <span>🪄</span>
-          <h2>Level Up</h2>
-          <div class="badge">Coming Soon</div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
+    <!-- End page-wrap -->
 
-    <!-- FOOTER -->
+    <!-- Footer -->
     <footer>
-      &copy; <span id="year"></span> Markuply — All fun, no stress!
-      <br />
-      <a href="index.html">Home</a> | <a href="about.html">About</a> |
-      <a href="https://github.com/Prathewsh/Fun_html_codes" target="_blank"
-        >GitHub</a
-      >
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 mb-4">
+            <div class="footer-logo">markuply</div>
+            <p>Your blueprint for a better web.</p>
+            <div class="footer-social mt-2">
+              <i class="bi bi-twitter"></i>
+              <i class="bi bi-github"></i>
+              <i class="bi bi-globe"></i>
+              <i class="bi bi-rss"></i>
+            </div>
+          </div>
+          <div class="col-md-2 footer-links mb-4">
+            <strong>Markuply</strong>
+            <a href="about.html">About</a>
+            <a href="#">Blog</a>
+          </div>
+          <div class="col-md-2 footer-links mb-4">
+            <strong>Support</strong>
+            <a href="#">Help Center</a>
+            <a href="#">Report an Issue</a>
+          </div>
+          <div class="col-md-2 footer-links mb-4">
+            <strong>Community</strong>
+            <a href="#">Forums</a>
+            <a href="https://discord.gg/Mk4xU8qwaF">Discord</a>
+          </div>
+          <div class="col-md-3 footer-links mb-4">
+            <strong>Developers</strong>
+            <a href="#">Docs</a>
+            <a href="#">Status</a>
+          </div>
+        </div>
+
+        <div
+          class="footer-bottom d-flex flex-wrap justify-content-between align-items-center"
+        >
+          <div>
+            &copy; 2025 Markuply. All rights reserved. Built with ❤️ for
+            developers.
+          </div>
+          <!-- <div>
+            <a href="#">Privacy</a> <br />
+            <a href="#">Terms</a>
+          </div> -->
+        </div>
+      </div>
     </footer>
 
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

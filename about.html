@@ -3,123 +3,327 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About – Markuply</title>
+    <link rel="icon" href="assets/logo.webp" />
+    <title>Markuply</title>
     <link
-      rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
     />
     <style>
       body {
-        background-color: #f9f9f9;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        color: #333;
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background-color: #0c0c0d;
+        color: #f9f9fa;
       }
-      .about-container {
-        max-width: 850px;
-        margin: 50px auto;
-        background: white;
-        border-radius: 12px;
-        padding: 40px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+      nav.navbar {
+        background-color: #1b1b1d;
+        padding: 1rem 2rem;
       }
-      h1,
-      h2 {
-        color: #6c63ff;
+
+      nav .navbar-brand {
         font-weight: bold;
+        font-size: 1.4rem;
+        color: #fff;
       }
-      h1 {
-        font-size: 2.7rem;
+
+      nav .nav-link {
+        color: #d7d7db !important;
+        margin-left: 1rem;
       }
-      h2 {
-        margin-top: 40px;
-        font-size: 1.8rem;
+
+      .hero {
+        padding: 4rem 2rem 2rem;
+        text-align: center;
       }
-      p {
-        font-size: 1.1rem;
-        line-height: 1.8;
-        margin-bottom: 20px;
+
+      .hero h1 {
+        font-size: 2.8rem;
+        font-weight: 600;
+        color: #ffffff;
       }
-      ul {
+
+      .hero p {
+        font-size: 1.2rem;
+        color: #d7d7db;
+      }
+
+      .card-grid {
+        padding: 2rem 1rem;
+      }
+
+      .card {
+        background-color: #1e1e20;
+        color: #fff;
+        border: none;
+        transition: transform 0.2s;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 0 0.5rem #3b82f6;
+      }
+
+      footer {
+        background-color: #1b1b1d;
+        color: #cfcfd1;
+        padding: 3rem 2rem 2rem;
+      }
+
+      .footer-logo {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #fff;
+      }
+
+      .footer-social i {
+        font-size: 1.3rem;
+        margin-right: 0.6rem;
+        color: #fff;
+      }
+
+      .footer-links a {
+        display: block;
+        color: #cfcfd1;
+        text-decoration: none;
+        margin: 0.3rem 0;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #444;
+        padding-top: 1rem;
+        margin-top: 2rem;
+        font-size: 0.875rem;
+      }
+
+      .card-links,
+      .card-links:hover {
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* Updated About Section Styling */
+      .about-container {
+        max-width: 900px;
+        margin: auto;
+        line-height: 1.7;
         font-size: 1.05rem;
+      }
+
+      .about-container h1,
+      .about-container h2 {
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #ffffff;
+      }
+
+      .about-container h1 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .about-container h2 {
+        font-size: 1.6rem;
+        margin-top: 2.5rem;
+      }
+
+      .about-container p {
+        color: #d7d7db;
+        margin-bottom: 1.2rem;
+      }
+
+      .about-container ul {
         padding-left: 1.2rem;
+        color: #d7d7db;
       }
-      .signature {
-        margin-top: 40px;
-        font-style: italic;
-        color: #555;
+
+      .about-container li {
+        margin-bottom: 0.6rem;
       }
+
       .github-link {
-        display: inline-block;
-        margin-top: 20px;
+        margin: 2.5rem 0 1rem;
+      }
+
+      .signature {
+        margin-top: 2rem;
+        font-style: italic;
+        color: #aaa;
       }
     </style>
   </head>
   <body>
-    <div class="about-container">
-      <h1 class="text-center">About Markuply</h1>
+    <!-- Main Layout Wrapper -->
+    <div class="page-wrap d-flex flex-column min-vh-100">
+      <!-- Header -->
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand me-4" href="#">Markuply</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-between"
+            id="navbarNav"
+          >
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="Playground/index.html">Playground</a>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="#">Learn</a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Community</a>
+              </li>
+            </ul>
+            <div class="d-flex">
+              <a class="nav-link" href="#">View on Github</a>
+            </div>
+          </div>
+        </div>
+      </nav>
 
-      <p>
-        <strong>Markuply</strong> is a playful and ever-growing collection of
-        simple, creative web mini-projects made with just HTML, CSS, and
-        JavaScript. It's built for anyone who loves tinkering with code —
-        whether you're just starting out, looking for quick ideas, or need a fun
-        coding break.
-      </p>
+      <!-- About Content -->
+      <div class="about-container container py-5">
+        <h1>About Markuply</h1>
 
-      <h2>How It Started</h2>
-      <p>
-        This project began as a personal experiment. I —
-        <strong>Prathewsh S Babu</strong> — started building tiny web pages out
-        of boredom and curiosity. One turned into five, five turned into twenty,
-        and soon I realized: this deserves a name, a home, and a place to grow.
-      </p>
+        <p>
+          <strong>Markuply</strong> is a fun, beginner-friendly playground to
+          learn how to build cool web stuff using just
+          <strong>HTML, CSS, and JavaScript</strong>. Whether you're learning to
+          code, looking for creative inspiration, or just want to mess around —
+          Markuply is made for you.
+        </p>
 
-      <p>
-        There were no big plans, no fancy tech stacks — just raw HTML, pure CSS,
-        and a dash of JavaScript magic. Markuply is a tribute to the joy of
-        building things that just work and make you smile.
-      </p>
+        <h2>Why Markuply Exists</h2>
+        <p>
+          I’m <strong>Prathewsh S Babu</strong>, and I created Markuply out of a
+          simple idea: coding should be fun. It started with a few random
+          projects I made for fun — and it grew into a place where anyone can
+          come explore, experiment, and enjoy coding without pressure.
+        </p>
 
-      <h2>What You'll Find Here</h2>
-      <p>Markuply is packed with:</p>
-      <ul>
-        <li>🕹️ Fun games (like Fruit Ninja clones, Snake, Tic-Tac-Toe)</li>
-        <li>🎨 Creative UI experiments (cards, loaders, animations)</li>
-        <li>🧠 Mini challenges and logic puzzles in JavaScript</li>
-        <li>📚 Beginner-friendly code with clean structure</li>
-      </ul>
+        <p>
+          No ads. No sign-ups. No frameworks. Just open the page and start
+          playing. That’s the Markuply way.
+        </p>
 
-      <h2>Why It Matters</h2>
-      <p>
-        In a world full of frameworks and boilerplates, sometimes it's
-        refreshing to go back to basics. Markuply helps developers — especially
-        beginners — learn by doing. No setup, no configs, just open the browser
-        and play.
-      </p>
+        <h2>What's Inside</h2>
+        <p>Markuply is loaded with:</p>
+        <ul>
+          <li>🕹️ Mini games like Fruit Ninja, Snake, and Tic-Tac-Toe</li>
+          <li>
+            🎨 Creative UI experiments like loaders, card effects, and
+            animations
+          </li>
+          <li>
+            🧠 Coding puzzles, logic challenges, and playful JS experiments
+          </li>
+          <li>
+            📚 Learn pages (coming soon) to guide beginners with interactive
+            content
+          </li>
+        </ul>
 
-      <h2>Get Involved</h2>
-      <p>
-        Got a mini idea? Found a bug? Or just want to say hi? Contributions,
-        feedback, and silly ideas are always welcome. You can fork the project,
-        open issues, or suggest features — or simply use it for your own
-        learning!
-      </p>
+        <h2>For Beginners & Tinkerers</h2>
+        <p>
+          You don’t need to be a pro to start. Markuply is built with simplicity
+          in mind — so you can explore real code, copy it, remix it, and make
+          your own spin-offs. Think of it as your coding sandbox where there are
+          no rules, just creativity.
+        </p>
 
-      <div class="github-link text-center">
-        <a
-          class="btn btn-dark btn-lg"
-          href="https://github.com/Prathewsh/markuply"
-          target="_blank"
-          rel="noopener noreferrer"
+        <h2>Get Involved</h2>
+        <p>
+          Have an idea? Want to contribute a fun snippet or silly game? I'd love
+          to hear from you! Markuply is <strong>open-source</strong> and always
+          open to new creators, suggestions, and feedback.
+        </p>
+
+        <div
+          class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3 my-5"
         >
-          🌐 View on GitHub
-        </a>
+          <a
+            class="btn btn-primary btn-lg"
+            href="https://discord.gg/Mk4xU8qwaF"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            💬 Join our Discord
+          </a>
+          <a
+            class="btn btn-outline-light btn-lg"
+            href="https://github.com/Prathewsh/markuply"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ⭐ Contribute on GitHub
+          </a>
+        </div>
       </div>
-
-      <p class="signature text-center">
-        Created with 💻, ❤️, and ☕ by <strong>Prathewsh S Babu</strong><br />
-        Just coding for fun — and hoping to inspire a few along the way.
-      </p>
     </div>
+    <!-- End page-wrap -->
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 mb-4">
+            <div class="footer-logo">markuply</div>
+            <p>Your blueprint for a better web.</p>
+            <div class="footer-social mt-2">
+              <i class="bi bi-twitter"></i>
+              <i class="bi bi-github"></i>
+              <i class="bi bi-globe"></i>
+              <i class="bi bi-rss"></i>
+            </div>
+          </div>
+          <div class="col-md-2 footer-links mb-4">
+            <strong>Markuply</strong>
+            <a href="about.html">About</a>
+            <a href="#">Blog</a>
+          </div>
+          <div class="col-md-2 footer-links mb-4">
+            <strong>Support</strong>
+            <a href="#">Help Center</a>
+            <a href="#">Report an Issue</a>
+          </div>
+          <div class="col-md-2 footer-links mb-4">
+            <strong>Community</strong>
+            <a href="#">Forums</a>
+            <a href="https://discord.gg/Mk4xU8qwaF">Discord</a>
+          </div>
+          <div class="col-md-3 footer-links mb-4">
+            <strong>Developers</strong>
+            <a href="#">Docs</a>
+            <a href="#">Status</a>
+          </div>
+        </div>
+
+        <div
+          class="footer-bottom d-flex flex-wrap justify-content-between align-items-center"
+        >
+          <div>
+            &copy; 2025 Markuply. All rights reserved. Built with ❤️ for
+            developers.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
