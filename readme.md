@@ -2,7 +2,9 @@
 
 > A beginner-friendly playground for building fun, creative web experiments with just HTML, CSS, and JavaScript.
 
-![Markuply Banner](assets/logo.webp)
+<p>
+  <img src="assets/logo.webp" alt="Markuply Logo" width="180"/>
+</p>
 
 ---
 
