@@ -49,6 +49,21 @@ Markuply is designed to:
 
 ---
 
+## 🚧 **Coming Soon**
+
+The project is currently being reworked and will be **ported to React** for better performance and scalability. Stay tuned for a smoother and more dynamic experience!
+
+✨ Planned improvements:
+
+- React + Vite rewrite
+- Component-based UI
+- Faster load times
+- Enhanced mobile support
+
+🕒 ETA: September 2025
+
+---
+
 ## 🤝 Get Involved
 
 Want to contribute a cool snippet or fun idea?
