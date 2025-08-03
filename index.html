@@ -14,6 +14,18 @@
       rel="stylesheet"
     />
     <style>
+      :root {
+        --shadow-color: 208deg 22% 58%;
+        --shadow-elevation-low: 0.3px 0.5px 0.7px
+            hsl(var(--shadow-color) / 0.34),
+          0.4px 0.8px 1px -1.2px hsl(var(--shadow-color) / 0.34),
+          1px 2px 2.5px -2.5px hsl(var(--shadow-color) / 0.34);
+        --shadow-elevation-medium: 0.3px 0.5px 0.7px
+            hsl(var(--shadow-color) / 0.36),
+          0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.36),
+          2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.36),
+          5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.36);
+      }
       body {
         margin: 0;
         font-family: "Segoe UI", sans-serif;
@@ -107,7 +119,75 @@
       }
 
       a:hover {
-        text-decoration: underline;
+        text-decoration: none;
+      }
+      .button {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: transparent;
+        padding: 1.4rem 2.2rem;
+        overflow: hidden;
+        border-radius: 100vmax;
+        box-shadow: var(--shadow-elevation-high);
+        transition: box-shadow 0.2s ease-in-out;
+        text-decoration: none;
+      }
+
+      .button::before,
+      .button::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+      }
+
+      .button::before {
+        z-index: 1;
+        right: -100%;
+        background: linear-gradient(
+          to right,
+          #9900f0 0%,
+          #ff85b3 50%,
+          #9900f0 100%
+        );
+        background-size: 50% 100%;
+        animation: scroll 1.2s infinite linear;
+      }
+
+      .button::after {
+        z-index: 2;
+        inset: 5px;
+        border-radius: 100vmax;
+        background-color: black;
+        transition: inset 0.2s ease-in-out;
+      }
+
+      .button span {
+        z-index: 3;
+        color: white;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .button:hover {
+        box-shadow: var(--shadow-elevation-medium);
+      }
+
+      .button:hover::after {
+        inset: 8px;
+      }
+
+      @keyframes scroll {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      #ViewOnGit {
+        height: 50px !important;
       }
     </style>
   </head>
@@ -139,8 +219,16 @@
                 <a class="nav-link" href="#">Community</a>
               </li>
             </ul>
-            <div class="d-flex">
-              <a class="nav-link" href="#">View on Github</a>
+            <div className="d-flex">
+              <a
+                id="ViewOnGit"
+                class="nav-link button"
+                href="https://github.com/Prathewsh/markuply"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>View on Github</span>
+              </a>
             </div>
           </div>
         </div>
