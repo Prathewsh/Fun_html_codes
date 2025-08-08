@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Markuply Status</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #0c0c0d;
+        color: #f9f9fa;
+        font-family: "Segoe UI", sans-serif;
+        min-height: 100vh;
+        padding: 2rem;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+      }
+
+      .status-card {
+        background-color: #1b1b1d;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        transition: transform 0.15s ease-in-out;
+      }
+      .status-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(59, 130, 246, 0.5);
+      }
+
+      .status-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .status-badge {
+        padding: 0.4em 0.8em;
+        font-weight: 600;
+        border-radius: 100vmax;
+        font-size: 0.85rem;
+        user-select: none;
+        display: inline-block;
+      }
+
+      .status-up {
+        background-color: #22c55e; /* green */
+        color: #0f2f17;
+        box-shadow: 0 0 8px #22c55eaa;
+      }
+
+      .status-down {
+        background-color: #ef4444; /* red */
+        color: #5f1212;
+        box-shadow: 0 0 8px #ef4444aa;
+      }
+
+      .status-maintenance {
+        background-color: #facc15; /* yellow */
+        color: #5a4a0a;
+        box-shadow: 0 0 8px #facc15aa;
+      }
+
+      .last-updated {
+        text-align: center;
+        font-size: 0.9rem;
+        color: #888;
+        margin-top: 2rem;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Markuply System Status</h1>
+
+    <div class="container my-5">
+      <div class="status-card">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="status-title">Live Code Editor</div>
+          <div class="status-badge status-up">Up</div>
+        </div>
+        <p>The Live Code Editor is fully functional with no known issues.</p>
+      </div>
+
+      <div class="status-card">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="status-title">Playground</div>
+          <div class="status-badge status-up">Up</div>
+        </div>
+        <p>The Playground environment is stable and ready for use.</p>
+      </div>
+
+      <div class="status-card">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="status-title">Learning Hub</div>
+          <div class="status-badge status-maintenance">Maintenance</div>
+        </div>
+        <p>
+          Learning Hub is currently undergoing updates. Some features may be
+          unavailable.
+        </p>
+      </div>
+
+      <div class="status-card">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="status-title">Community Tab</div>
+          <div class="status-badge status-maintenance">Maintenance</div>
+        </div>
+        <p>
+          The Community Tab is currently undergoing updates. Some features may
+          be unavailable.
+        </p>
+      </div>
+
+      <!-- <div class="status-card">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="status-title">Project Dashboard</div>
+          <div class="status-badge status-down">Down</div>
+        </div>
+        <p>
+          The Project Dashboard is currently experiencing issues and is
+          temporarily unavailable.
+        </p>
+      </div> -->
+    </div>
+
+    <div class="last-updated">Last updated: August 9, 2025 12:24 AM IST</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

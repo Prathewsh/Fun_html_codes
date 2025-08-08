@@ -49,6 +49,51 @@
         margin-left: 1rem;
       }
 
+      /* Dropdown background */
+      .dropdown-menu {
+        background-color: #1b1b1d; /* dark background like nav */
+        border: none;
+        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3); /* subtle blue shadow */
+        min-width: 10rem;
+        padding: 0.25rem 0;
+        border-radius: 0.25rem;
+      }
+
+      /* Dropdown links style */
+      .dropdown-item {
+        color: #d7d7db; /* light gray text */
+        padding: 0.5rem 1.5rem;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: background-color 0.2s, color 0.2s;
+      }
+
+      /* Hover and focus */
+      .dropdown-item:hover,
+      .dropdown-item:focus {
+        background-color: #3b82f6; /* bright blue highlight */
+        color: #fff;
+        outline: none;
+      }
+
+      /* Dropdown toggle (Learn) link styling */
+      .navbar-nav .dropdown-toggle {
+        color: #d7d7db !important;
+        font-weight: 600;
+        transition: color 0.2s;
+      }
+
+      .navbar-nav .dropdown-toggle:hover,
+      .navbar-nav .dropdown-toggle:focus {
+        color: #3b82f6 !important;
+        text-decoration: none;
+        outline: none;
+      }
+
+      .navbar-nav .dropdown-toggle::after {
+        display: none;
+      }
+
       .hero {
         padding: 4rem 2rem 2rem;
         text-align: center;
@@ -73,12 +118,26 @@
         background-color: #1e1e20;
         color: #fff;
         border: none;
+        border-radius: 5px;
         transition: transform 0.2s;
       }
 
       .card:hover {
         transform: translateY(-4px);
         box-shadow: 0 0 0.5rem #3b82f6;
+      }
+
+      .article-card {
+        background-color: #1e1e20;
+        color: #fff;
+        border: 1px solid white;
+        border-radius: 5px;
+        transition: transform 0.2s;
+      }
+
+      .article-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 0 0.5rem white;
       }
 
       footer {
@@ -211,11 +270,32 @@
             id="navbarNav"
           >
             <ul class="navbar-nav me-auto">
+              <!-- <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Learn
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="Learn/html.html">HTML</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="Learn/css.html">CSS</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="Learn/javascript.html"
+                      >JavaScript</a
+                    >
+                  </li>
+                </ul>
+              </li> -->
               <li class="nav-item">
                 <a class="nav-link" href="Playground/index.html">Playground</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="Learn/index.html">Learn</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="Community/index.html">Community</a>
@@ -268,9 +348,7 @@
                 <h5>Jump In</h5>
                 <p>
                   New to coding? No worries! Start with simple HTML, CSS, and JS
-                  projects — learn by doing in minutes. Explore friendly guides,
-                  mini challenges, and community-shared code snippets — all in
-                  one place.
+                  projects — learn by doing in minutes.
                 </p>
               </div>
             </a>
@@ -299,6 +377,81 @@
           </div>
         </div>
       </section>
+
+      <!-- Articles -->
+      <!-- <section class="container card-grid flex-grow-1">
+        <h2 class="mb-5">Latest articles</h2>
+        <div class="row g-4">
+          <div class="col-md-4 d-flex">
+            <a class="card-links w-100" href="Learn/index.html">
+              <div class="article-card p-3 h-100">
+                <h5>JavaScript Temporal is coming</h5>
+                <p>
+                  New to coding? No worries! Start with simple HTML, CSS, and JS
+                  projects — learn by doing in minutes.
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4 d-flex">
+            <a class="card-links w-100" href="Playground/index.html">
+              <div class="article-card p-3 h-100">
+                <h5>CSS anchor positioning</h5>
+                <p>
+                  Try out fun mini-games and creative tools. It's your sandbox
+                  to experiment, play, and learn.
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4 d-flex">
+            <a class="card-links w-100" href="code_editor.html">
+              <div class="article-card p-3 h-100 w-100">
+                <h5>Using the View Transition API</h5>
+                <p>
+                  Write, edit, and run code instantly in your browser. Perfect
+                  for trying out ideas, debugging, or learning by doing.
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="row g-4 my-2">
+          <div class="col-md-4 d-flex">
+            <a class="card-links w-100" href="Learn/index.html">
+              <div class="article-card p-3 h-100">
+                <h5>Jump In</h5>
+                <p>
+                  New to coding? No worries! Start with simple HTML, CSS, and JS
+                  projects — learn by doing in minutes.
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4 d-flex">
+            <a class="card-links w-100" href="Playground/index.html">
+              <div class="article-card p-3 h-100">
+                <h5>Playground</h5>
+                <p>
+                  Try out fun mini-games and creative tools. It's your sandbox
+                  to experiment, play, and learn.
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4 d-flex">
+            <a class="card-links w-100" href="code_editor.html">
+              <div class="article-card p-3 h-100 w-100">
+                <h5>Live Code Editor</h5>
+                <p>
+                  Write, edit, and run code instantly in your browser. Perfect
+                  for trying out ideas, debugging, or learning by doing.
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section> -->
     </div>
     <!-- End page-wrap -->
 
@@ -334,7 +487,7 @@
           <div class="col-md-3 footer-links mb-4">
             <strong>Developers</strong>
             <a href="#">Docs</a>
-            <a href="#">Status</a>
+            <a href="status.html">Status</a>
           </div>
         </div>
 
